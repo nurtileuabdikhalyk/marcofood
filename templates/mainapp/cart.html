@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <title>{% block title %}{{ title }}{% endblock title %}</title>
+</head>
+{% block content %}
+
+
+<section class="about-banner relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Men
+                </h1>
+                <p class="text-white link-nav"><a href="{% url 'home' %}">Главная </a> <span
+                        class="lnr lnr-arrow-right"></span> <a href="menu.html"> Menus</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="col-lg-12">
+    <br>
+    <div class="box-element">
+        <a class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Продолжить покупки</a>
+    </div>
+
+
+    <br>
+    <div class="box-element">
+        <div class="cart-row">
+            <div style="flex:2"></div>
+            <div style="flex:2"><strong>Название</strong></div>
+            <div style="flex:1"><strong>Цена</strong></div>
+            <div style="flex:1"><strong>Количество</strong></div>
+            <div style="flex:1"><strong>Общий</strong></div>
+        </div>
+        {% for item in items %}
+        <div class="cart-row">
+            <div style="flex:2"><img width="150px" height="100px" class="row-image"
+                                     src="{{ item.product.image.url }}"></div>
+            <div style="flex:2"><p>{{ item.product.name }}</p></div>
+            <div style="flex:1"><p>{{ item.product.price }} ₸</p></div>
+            <div style="flex:1">
+
+                <p class="quantity">{{ item.quantity }}</p>
+
+                <div class="quantity">
+                    <img data-product="{{ item.product.id }}" data-action="add" class="chg-quantity update-cart"
+                         src="{% static  'img/arrow-up.png' %}">
+
+                    <img data-product="{{ item.product.id }}" data-action="remove" class="chg-quantity update-cart"
+                         src="{% static  'img/arrow-down.png' %}">
+                </div>
+            </div>
+            <div style="flex:1"><p>{{ item.get_total }} ₸</p></div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="box-element">
+
+
+        <br>
+        <br>
+        <table class="table">
+            <tr>
+                <th><h5>Количество: <strong>{{ order.get_cart_items }}</strong></h5></th>
+                <th><h5>Общая цена: <strong>{{ order.get_cart_total }} ₸</strong></h5></th>
+                <th>
+                    <a style="float:right; margin:5px;" class="btn btn-success"
+                       href="{% url 'checkout' %}">Заказать</a>
+                </th>
+            </tr>
+        </table>
+
+    </div>
+    <br>
+</div>
+{% endblock content %}

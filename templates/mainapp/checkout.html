@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+<section class="about-banner relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Men
+                </h1>
+                <p class="text-white link-nav"><a href="{% url 'home' %}">Главная </a> <span
+                        class="lnr lnr-arrow-right"></span> <a href="menu.html"> Menus</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            <form action="{% url 'add_order' %}" id="form" method="post">
+                {% csrf_token %}
+                <div id="user-info">
+                    <div class="form-field">
+<!--							<input required class="form-control" type="text" name="name" placeholder="Name..">-->
+<!--                        {{ form.customer }}-->
+                    </div>
+                    <div class="form-field">
+<!--							<input required class="form-control" type="email" name="email" placeholder="Email..">-->
+<!--                        {{ form.order }}-->
+                    </div>
+                </div>
+
+                <div id="shipping-info">
+                    <hr>
+                    <p>Информация о доставке:</p>
+                    <hr>
+                    <div class="form-field">
+                        {{ form.city }}
+                    </div>
+                    <div class="form-field">
+                        {{ form.street }}
+                    </div>
+                    <div class="form-field">
+                        {{ form.home_number }}
+                    </div>
+                    <div class="form-field">
+
+                        {{ form.floor }}
+                    </div>
+                    <div class="form-field">
+
+                        {{ form.door }}
+                    </div>
+                    <div class="form-field">
+
+                        {{ form.phone }}
+                    </div>
+                </div>
+
+                <hr>
+                <div class="sc-kYWVYA biYSpQ">Способ оплаты:</div>
+                <div class="sc-yeoIj idikpS">
+                    <div class="sc-bPyhqo gmAnyM">
+                        <input type="radio" id="card" name="payment"
+                               class="sc-jGprRt igtGqv" value="card"
+                               style="margin-right: 15px;">
+                        <label for="card"
+                               class="sc-dWINGa iTBBd">Карта</label></div>
+                    <div class="sc-bPyhqo gmAnyM">
+                        <input type="radio" id="cash" name="payment"
+                               class="sc-jGprRt igtGqv" value="cash"
+                               style="margin-right: 15px;"><label for="cash"
+                                                                  class="sc-dWINGa iTBBd">Наличный</label></div>
+                </div>
+
+
+                <button id="make-button" class="btn btn-success btn-block" type="submit" value="Continue">Con</button>
+            </form>
+
+        </div>
+
+        <br>
+
+    </div>
+
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Назад в корзину</a>
+            <hr>
+            <h3>Итог заказа</h3>
+            <hr>
+            {% for item in items %}
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" height="56px" width="100px" src="{{item.product.image.url}}">
+                </div>
+                <div style="flex:2"><p>{{ item.product.name }}</p></div>
+                <div style="flex:1"><p>{{ item.product.price }} ₸</p></div>
+                <div style="flex:1"><p>x{{ item.quantity }}</p></div>
+            </div>
+            {% endfor %}
+            <h5>Количество: {{ order.get_cart_items }}</h5>
+            <h5>Общая цена: {{ order.get_cart_total }} ₸</h5>
+        </div>
+    </div>
+    <br>
+</div>
+<script type="text/javascript">
+    var total='{{ order.get_cart_total }}'
+    if (user != 'AnonymousUser'){
+        document.getElementById('user-info').innerHTML = ''
+    }
+
+
+
+    function submitFormData()
+    {
+        console.log('submitFormData')
+        var userFormData = {
+            'name':null,
+            'email':null,
+            'total':total,
+        }
+
+
+        if (user == 'AnonymousUser'){
+            userFormData.name = form.name.value
+            userFormData.email = form.email.value
+        }
+
+        var url = "/guest_order/"
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'Content-Type':'applicaiton/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({'form2':userFormData}),
+
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            alert('Transaction completed');
+            cart = {}
+            document.cookie='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+            window.location.href = "{% url 'home' %}"
+
+        })
+    }
+
+
+
+
+</script>
+
+{% endblock content %}
+
+
+ 

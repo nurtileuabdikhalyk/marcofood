@@ -1,0 +1,39 @@
+{% load static %}
+
+<header id="header" style="">
+    <div class="header-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div id="logo">
+                    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="" title=""/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-menu">
+        <div class="row align-items-center justify-content-center d-flex">
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'about' %}">Про нас</a></li>
+
+
+                    <li><a href="{% url 'contact' %}">Контакты</a></li>
+                    <li>
+                        <a href="{% url 'cart' %}">
+                            <i class="fas fa-shopping-cart"></i> Корзина ({{ cartItems }})
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}"><i class="fas fa-sign-out"></i> Выход</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account_login' %}"><i class="fas fa-user-plus"></i> Вход</a></li>
+                    <li><a href="{% url 'account_signup' %}"><i class="fas fa-sign-in"></i>Регистрация</a></li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>

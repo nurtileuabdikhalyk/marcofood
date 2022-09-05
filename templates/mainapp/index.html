@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+
+<!-- start banner Area -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-12 banner-content">
+                <h6 class="text-white">Широкие возможности выбора</h6>
+                <h1 class="text-white">Вкусные рецепты</h1>
+                <p class="text-white">
+                    inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                    standards especially in the workplace. That’s why it’s crucial that, as women.
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Check Our Menu</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+
+<!-- Start menu-area Area -->
+<section class="menu-area section-gap" id="menu">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Напитки</h1>
+                </div>
+            </div>
+        </div>
+
+        <ul class="filter-wrap filters col-lg-12 no-padding">
+            <li class="active" data-filter="*">Меню</li>
+            <li data-filter=".breakfast">Завтрак</li>
+            <li data-filter=".lunch">Обед</li>
+            <li data-filter=".dinner">Ужин</li>
+            <li data-filter=".budget-meal">Бюджетное питание</li>
+            <li data-filter=".buffet">Буфет</li>
+        </ul>
+        <div class="filters-content">
+            <div class="row grid">
+                <main>
+
+                    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+
+
+                        {% for beverage in beverages %}
+
+                        <div class="col-md-4 all {{ beverage.categorymeal }}">
+                            <div class="single-menu">
+                                <div class="card h-100 shadow-sm">
+                                    <img
+                                            src="{{ beverage.image.url }}"
+                                            class="card-img-top" alt="">
+                                    <div class="card-body">
+
+                                        <div class="title-wrap d-flex justify-content-between">
+                                            <h5>{{ beverage.name }}</h5>
+                                            <h5 class="price">{{ beverage.price }} ₸</h5>
+                                        </div>
+                                        <p>
+                                            {{ beverage.description }}
+                                        </p>
+                                        <br>
+
+
+                                        <center><button data-product="{{beverage.id}}" data-action="add" class="button update-cart" role="button" style="background: #ffd1d1; border-radius: 6px; width: 110px; height: 50px;"><strong>Добавить корзину</strong></button>
+<!--                                            <div class="d-flex align-items-center justify-content-between"-->
+<!--                                                  style="background: #ffd1d1; border-radius: 6px; width: 110px; height: 36px; margin-right: 12px;">-->
+
+
+<!--                                                <button data-product="{{beverage.id}}" data-action="remove"-->
+<!--                                                        class="button update-cart" role="button">-->
+
+<!--                                                    <i class="fas fa-minus"-->
+<!--                                                       style="color: #f42f2c;  bottom: 1px;"></i>-->
+
+<!--                                                </button>-->
+<!--                                                <div class="sc-himrzO cmCzds"-->
+<!--                                                     style="font-weight: 650; font-size: 14px; line-height: 20px;   color: #f42f2c;">-->
+<!--                                                    0-->
+<!--                                                </div>-->
+<!--                                                <button data-product="{{ beverage.id }}" data-action="add"-->
+<!--                                                        class="button update-cart" role="button">-->
+
+<!--                                                    <i class="fas fa-plus"-->
+<!--                                                       style="color: #f42f2c;  bottom: 1px;"></i>-->
+
+<!--                                                </button>-->
+
+<!--                                            </div>-->
+                                        </center>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </main>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End menu-area Area -->
+
+<!-- Start gallery-area Area -->
+<section class="gallery-area section-gap" id="gallery">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Галерея еды</h1>
+                </div>
+            </div>
+        </div>
+
+        <ul class="filter-wrap filters col-lg-12 no-padding">
+            <li class="active" data-filter="*">Меню</li>
+            <li data-filter=".breakfast">Завтрак</li>
+            <li data-filter=".lunch">Обед</li>
+            <li data-filter=".dinner">Ужин</li>
+            <li data-filter=".budget-meal">Бюджетное питание</li>
+            <li data-filter=".buffet">Буфет</li>
+        </ul>
+
+
+        <div class="filters-content">
+            <div class="row grid">
+                <main>
+
+                    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+
+
+                        {% for food in foods %}
+
+                        <div class="col-md-4 all {{ food.categorymeal }}">
+                            <div class="single-menu">
+                                <div class="card h-100 shadow-sm">
+                                    <img
+                                            src="{{ food.image.url }}"
+                                            class="card-img-top" alt="">
+                                    <div class="card-body">
+
+                                        <div class="title-wrap d-flex justify-content-between">
+                                            <h5>{{ food.name }}</h5>
+                                            <h5 class="price">{{ food.price }} ₸</h5>
+                                        </div>
+                                        <p>
+                                            {{ food.description }}
+                                        </p>
+                                        <br>
+                                        <center>
+                                            <button data-product="{{ food.id }}" data-action="add" class="button update-cart" role="button" style="background: #ffd1d1; border-radius: 6px; width: 110px; height: 50px;"><strong>Добавить корзину</strong></button>
+<!--                                            <div class="d-flex align-items-center justify-content-between"-->
+<!--                                                 style="background: #ffd1d1; border-radius: 6px; width: 110px; height: 36px; margin-right: 12px;">-->
+
+
+<!--                                                <button data-product="{{ food.id }}" data-action="remove"-->
+<!--                                                        class="button update-cart" role="button">-->
+
+<!--                                                    <i class="fas fa-minus"-->
+<!--                                                       style="color: #f42f2c;  bottom: 1px;"></i>-->
+
+<!--                                                </button>-->
+<!--                                                <div class="sc-himrzO cmCzds"-->
+<!--                                                     style="font-weight: 650; font-size: 14px; line-height: 20px;   color: #f42f2c;">-->
+<!--                                                    0-->
+<!--                                                </div>-->
+<!--                                                <button data-product="{{ food.id }}" data-action="add"-->
+<!--                                                        class="button update-cart" role="button">-->
+
+<!--                                                    <i class="fas fa-plus"-->
+<!--                                                       style="color: #f42f2c;  bottom: 1px;"></i>-->
+
+<!--                                                </button>-->
+
+<!--                                            </div>-->
+                                        </center>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </main>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+

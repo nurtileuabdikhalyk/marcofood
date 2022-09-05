@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+
+
+<!-- start banner Area -->
+<section class="about-banner relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    {{ title }}
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Главная </a> <span
+                        class="lnr lnr-arrow-right"></span>
+                    <a href="about.html"> {{ title }}</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start home-about Area -->
+<section class="home-about-area section-gap">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 home-about-left">
+                <h1>О нашей истории</h1>
+                <p>
+                    Who are in extremely love with eco friendly system. Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+
+            </div>
+            <div class="col-lg-6 home-about-right">
+                <img class="img-fluid" src="img/about-img.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End home-about Area -->
+
+<!-- Start services Area -->
+<section class="services-area pb-120">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">
+                        Какие особые блюдо мы предлагаем</h1>
+                    <p>
+                        Кто очень любит экологически чистую продукту</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-service">
+                    <div class="thumb">
+                        <img src="{% static 'img/about/s1.jpg' %}" alt="">
+                    </div>
+                    <a href="#">
+                        <h4>Хлеб Фруктовый Сэндвич с Сыром</h4>
+                    </a>
+                    <p>
+                        inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                        women face higher conduct.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-service">
+                    <div class="thumb">
+                        <img src="{% static 'img/about/s2.jpg' %}" alt="">
+                    </div>
+                    <a href="#">
+                        <h4>Котлета из говядины с зеленым луком</h4>
+                    </a>
+                    <p>
+                        inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                        women face higher conduct.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-service">
+                    <div class="thumb">
+                        <img src="{% static 'img/about/s3.jpg' %}" alt="">
+                    </div>
+                    <a href="#">
+                        <h4>Мясо с соусом и овощами</h4>
+                    </a>
+                    <p>
+                        inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                        women face higher conduct.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End services Area -->
+
+
+{% endblock content %}
