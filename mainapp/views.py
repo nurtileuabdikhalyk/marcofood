@@ -44,7 +44,6 @@ def cart(request):
 
 
 def signup(request):
-    # form = SignUpForm()
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -104,7 +103,7 @@ def addOrder(request):
                                         quantity=item.quantity)
             items.delete()
 
-    return redirect('home')
+    return redirect('order')
 
 
 def contact(request):
@@ -161,3 +160,7 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
     return JsonResponse('Added', safe=False)
+
+
+def order(request):
+    return render(request, 'mainapp/order.html')

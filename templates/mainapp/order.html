@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="relative about-banner">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    {{ title }}
+                </h1>
+                <p class="text-white link-nav"><a href="{% url 'home' %}">Главная </a> <span
+                        class="lnr lnr-arrow-right"></span>
+                    Заказ</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center">
+    <br>
+    <div class="sc-dvwKko IghWi text-center" style="margin-bottom: 70px;"><img width="258px" height="219px"
+                                                                               src="{% static 'img/order.jpg' %}"></div>
+    <h3>
+        Отличная работа!<br>Вы успешно заказали еду у нас!<br>
+        Примерное время прибытия: <br>25 минуты
+    </h3>
+    <br>
+
+    <a href="{% url 'home' %}"
+       class="button update-cart" role="button"
+       style="background: #ffd1d1; border-radius: 6px; width: 200px; height: 50px; font-weight: bold; color:#f42f2c;">Перейти
+        на главную страницу
+    </a>
+    <br>
+    <br>
+</div>
+{% endblock content %}

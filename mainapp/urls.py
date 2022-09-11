@@ -9,7 +9,7 @@ urlpatterns = [
     path('checkout/', checkout, name='checkout'),
     path('update_item/', updateItem, name='update_item'),
     path('add_order/', addOrder, name='add_order'),
-    # path('accounts/signup/', addUser, name='account_signup'),
+    path('order/', order, name='order'),
     path('accounts/signup/', signup, name='account_signup'),
     path('add_question/', addQuestion, name='add_question'),
 ]

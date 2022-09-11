@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'mainapp',
     'allauth',
     'allauth.account',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
